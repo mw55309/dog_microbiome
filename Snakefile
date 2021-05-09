@@ -1,6 +1,3 @@
-shell.executable("/bin/bash")
-shell.prefix("source $HOME/.bashrc; ")
-
 
 def get_accessions():
 	
