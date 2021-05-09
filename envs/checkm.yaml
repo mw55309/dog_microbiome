@@ -1,0 +1,12 @@
+name: checkm
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - checkm-genome=1.0.13
+  - pplacer=1.1.alpha19
+  - fasttree=2.1.10
+  - hmmer=3.2.1
+  - prodigal=2.6.3
+ 
