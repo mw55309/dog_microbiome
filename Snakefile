@@ -89,6 +89,8 @@ rule megahit:
 		fa="megahit/{id}/final.contigs.fa"
 	conda: "envs/megahit.yaml"
 	threads: 8
+	resources:
+		mem_mb=64000, disk_mb=80000
 	shell: 
 		'''
 		mkdir -p {params.di} && megahit --continue --k-list 31,59,87 --kmin-1pass -m 0.95 --min-contig-len 1500 -t {threads} -1 {input.R1} -2 {input.R2} -o {params.di}"
@@ -102,6 +104,8 @@ rule combine:
 	output: 
 		R1="combined/{id}.R1.fq.gz",
 		R2="combined/{id}.R2.fq.gz"
+	resources:
+		mem_mb=8000, disk_mb=50000
 	shell:
 		'''
 		cat {input.R1} > {output.R1} && cat {input.R2} > {output.R2} && rm {input.R1} {input.R2}
@@ -116,6 +120,8 @@ rule download_and_trim:
 		id="{id}"
 	conda: "envs/cutadapt.yaml"
 	threads: 2
+	resources:
+		mem_mb=16000, disk_mb=18000
 	shell: 
 		'''
 		fastq-dump --split-files --split-spot --gzip {params.id} && cutadapt -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT -a AGATCGGAAGAGC -A AGATCGGAAGAGC -o {output.R1} -p {output.R2} -O 5 --minimum-length=50 {params.id}_1.fastq.gz {params.id}_2.fastq.gz
