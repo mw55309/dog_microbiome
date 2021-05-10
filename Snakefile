@@ -73,7 +73,7 @@ print(DOGS)
 ######################################################
 
 rule all:
-	input: expand("megahit/{sample}/final.contigs.fa", sample=DOGS)
+	input: expand("megahit/{sample}", sample=DOGS)
 
 
 rule megahit:
