@@ -83,7 +83,8 @@ rule megahit:
 	params:
 		di="megahit/{id}"
 	output:
-		fa="megahit/{id}/final.contigs.fa"
+#		fa="megahit/{id}/final.contigs.fa"
+		di=directory("megahit/{id}")
 	conda: "envs/megahit.yaml"
 	threads: 8
 	resources:
