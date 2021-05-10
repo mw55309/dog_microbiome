@@ -90,7 +90,7 @@ rule megahit:
 		mem_mb=64000, disk_mb=80000
 	shell: 
 		'''
-		mkdir -p {params.di} && megahit --continue --k-list 31,59,87 --kmin-1pass -m 0.95 --min-contig-len 1500 -m 64000000 -t {threads} -1 {input.R1} -2 {input.R2} -o {params.di}
+		mkdir -p {params.di} && megahit --continue --k-list 31,59,87 --kmin-1pass -m 0.95 --min-contig-len 1500 -m 64000000000 -t {threads} -1 {input.R1} -2 {input.R2} -o {params.di}
 		'''
 
 
