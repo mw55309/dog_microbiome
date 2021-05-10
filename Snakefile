@@ -1,4 +1,6 @@
 
+GS_PREFIX="dog_microbiome_updated_env/"
+
 def get_accessions():
 	
 	accns = list()
@@ -81,10 +83,10 @@ rule megahit:
 		R1="combined/{id}.R1.fq.gz",
 		R2="combined/{id}.R2.fq.gz"
 	params:
-		di="megahit/{id}"
+		di=GS_PREFIX + "megahit/{id}"
 	output:
-#		fa="megahit/{id}/final.contigs.fa"
-		di=directory("megahit/{id}")
+		fa=GS_PREFIX + "megahit/{id}/final.contigs.fa"
+		#di=directory("megahit/{id}")
 	conda: "envs/megahit.yaml"
 	threads: 8
 	resources:
