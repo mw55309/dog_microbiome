@@ -78,8 +78,8 @@ rule all:
 
 rule megahit:
 	input:
-		R1="combined/{id}.R1.fq.gz",
-		R2="combined/{id}.R2.fq.gz"
+		R1=ancient("combined/{id}.R1.fq.gz"),
+		R2=ancient("combined/{id}.R2.fq.gz")
 	output:
 		di=directory("megahit/{id}")
 	conda: "envs/megahit.yaml"
